@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 class CarnetOrdres():
     def __init__(self):
         self.URLCARNETORDRES=""
@@ -64,7 +65,8 @@ class CarnetOrdres():
         self.TACTIONS_V=[]
         self.TORDERS_V=[]
 
-    def findCarnerOrdres(self):
+    #carnet d'ordre pour investir.com
+    """def findCOInvestir(self):
 
         with urllib.request.urlopen(self.Url) as f:
             data = f.read().decode('utf-8')
@@ -94,4 +96,4 @@ class CarnetOrdres():
 
                         elif (num_column == 5) and (len(self.getTORDERS_V())< 10):
                             self.addTORDERS_V(int(val))
-                    num_column+=1
+                    num_column+=1"""

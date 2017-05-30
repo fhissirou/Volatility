@@ -13,3 +13,8 @@
         ]
     }
 }
+
+{   "_id":"CAC40",
+    "DomainName":"boursorama.com",
+    "Url":"http://www.boursorama.com/bourse/cours/includes/last_transactions.phtml?symbole=1rPCAC",
+}

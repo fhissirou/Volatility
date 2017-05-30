@@ -14,7 +14,7 @@ from carnetOrdres import CarnetOrdres
 from  histTransaction import HistTransaction
 from pymongo import MongoClient
 
-class CrawlerData(CarnetOrdres, HistTransaction):
+class CrawlerEuronext(CarnetOrdres, HistTransaction):
     def __init__(self):
         CarnetOrdres.__init__(self)
         HistTransaction.__init__(self)
@@ -69,7 +69,7 @@ class CrawlerData(CarnetOrdres, HistTransaction):
         idname=str(_nom+"_"+str(_isin)+"-"+str(_mic))
         url = self.genUrlHistEuronext(_isin,_mic)
         self.setURLHISTTRANSACTION(url)
-        self.crawlDataHistTransaction()
+        self.crawlHistTransEuronext()
         data = self.getDATAHISTTRANSACTION()
 
         if len(data) > 0:
@@ -120,5 +120,5 @@ url2="https://www.euronext.com/sites/www.euronext.com/modules/common/common_list
 url4="https://www.euronext.com/sites/www.euronext.com/modules/common/common_listings/custom/nyx_eu_listings/nyx_eu_listings_price_chart/pricechart/pricechart.php?q=intraday_data&from=1000&isin=FR0000060832&mic=XPAR&dateFormat=d/m/Y&locale=null"
 
 
-crawl = CrawlerData()
+crawl = CrawlerEuronext()
 crawl.crawlAllHist()
