@@ -4,6 +4,8 @@
 import urllib.request
 import json
 import requests
+import errno
+from socket import error as SocketError
 
 
 class HistTransaction:
@@ -28,7 +30,11 @@ class HistTransaction:
         #strdata = body.decode("utf-8")
         try:
             self.setDATAHISTTRANSACTION(json.loads(strdata))
-        except urllib2.HTTPError:
+        except urllib2.HTTPError, :
             pass
+        except SocketError as e:
+            if e.errno != errno.ECONNRESET:
+                raise # Not error we are looking for
+            pass # 
 
     #def crawlHistTransCAC40Boursorama(self):
