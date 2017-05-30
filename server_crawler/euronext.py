@@ -68,8 +68,10 @@ class CrawlerEuronext(CarnetOrdres, HistTransaction):
         collection= self.DB["historiques_transactions"]
         idname=str(_nom+"_"+str(_isin)+"-"+str(_mic))
         url = self.genUrlHistEuronext(_isin,_mic)
+        #print(url)
         self.setURLHISTTRANSACTION(url)
         self.crawlHistTransEuronext()
+        #print("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
         data = self.getDATAHISTTRANSACTION()
 
         if len(data) > 0:

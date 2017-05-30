@@ -3,6 +3,7 @@
 
 import urllib.request
 import json
+import requests
 
 
 class HistTransaction:
@@ -21,9 +22,10 @@ class HistTransaction:
         self.DATAHISTTRANSACTION= val
 
     def crawlHistTransEuronext(self):
-        reponse = urllib.request.urlopen(self.getURLHISTTRANSACTION())
-        body = reponse.read()
-        strdata = body.decode("utf-8")
+        reponse = requests.get(self.getURLHISTTRANSACTION(),verify=False)
+        #reponse = urllib.request.urlopen(self.getURLHISTTRANSACTION())
+        strdata = reponse.text
+        #strdata = body.decode("utf-8")
         try:
             self.setDATAHISTTRANSACTION(json.loads(strdata))
         except urllib2.HTTPError:
