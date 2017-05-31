@@ -1,0 +1,5 @@
+While installing requests library it skips few of optional security packages ('pyOpenSSL', 'ndg-httpsclient', and 'pyasn1') which are required for the SSL/Https connection. You can fix it by either running this command
+
+pip install "requests[security]"
+or
+pip install pyopenssl ndg-httpsclient pyasn1
