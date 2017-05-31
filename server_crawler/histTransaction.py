@@ -3,7 +3,6 @@
 
 import urllib.request
 import json
-import requests
 import errno
 from socket import error as SocketError
 
@@ -24,13 +23,17 @@ class HistTransaction:
         self.DATAHISTTRANSACTION= val
 
     def crawlHistTransEuronext(self):
-        reponse = requests.get(self.getURLHISTTRANSACTION(),verify=False)
-        #reponse = urllib.request.urlopen(self.getURLHISTTRANSACTION())
-        strdata = reponse.text
-        #strdata = body.decode("utf-8")
+        headers = {}
+        headers['User-Agent'] = "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17"
+
+        req = urllib.request.Request(self.getURLHISTTRANSACTION(),headers = headers)
+        reponse = urllib.request.urlopen(req)
+        #strdata = reponse.text
+        body= reponse.read()
+        strdata = body.decode("utf-8")
         try:
             self.setDATAHISTTRANSACTION(json.loads(strdata))
-        except urllib2.HTTPError, :
+        except urllib2.HTTPError:
             pass
         except SocketError as e:
             if e.errno != errno.ECONNRESET:
