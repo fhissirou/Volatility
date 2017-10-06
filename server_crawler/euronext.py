@@ -41,7 +41,7 @@ class CrawlerEuronext(CarnetOrdres, HistTransaction):
         date_time = time.strftime("%d/%m/%Y")
         date_time+=" 02:00:00"
         pattern = "%d/%m/%Y %H:%M:%S"
-        date_time="30/05/2017 02:00:00"
+        date_time="31/05/2017 02:00:00"
         today= int(time.mktime(time.strptime(date_time, pattern)))
         strtoday= str(today)+"000"
         
@@ -66,7 +66,7 @@ class CrawlerEuronext(CarnetOrdres, HistTransaction):
         ldic=[]
         now = datetime.datetime.now()
         dt_time= now.strftime("%Y-%m-%d %H:%M")
-        dt_time="30/05/2017 02:00:00"
+        #dt_time="31/05/2017 02:00:00"
         collection= self.DB["historiques_transactions"]
         idname=str(_nom+"_"+str(_isin)+"-"+str(_mic))
         url = self.genUrlHistEuronext(_isin,_mic)
